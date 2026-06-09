@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M. Atha Al Farras — Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --night:  #0d0f14;
+            --ink:    #161a23;
+            --card:   #1e2330;
+            --border: #2a3045;
+            --accent: #4f7cff;
+            --glow:   #4f7cff33;
+            --muted:  #8892a4;
+            --light:  #e8ecf4;
+            --white:  #ffffff;
+        }
+
+        body {
+            background: var(--night);
+            color: var(--light);
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 48px 48px;
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page-wrap {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 680px;
+        }
+
+        .hero {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem 2.5rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 260px; height: 260px;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--glow);
+            border: 1px solid var(--accent);
+            border-radius: 100px;
+            padding: 0.3rem 0.85rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 0.4rem;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            background: var(--ink);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            transition: border-color 0.2s;
+        }
+
+        .info-item:hover { border-color: var(--accent); }
+
+        .info-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .hobbies {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .hobby-card {
+            background: var(--ink);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: border-color 0.2s, transform 0.2s;
+            cursor: default;
+        }
+
+        .hobby-card:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .hobby-icon {
+            font-size: 1.7rem;
+            width: 2.5rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .hobby-name {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        .hobby-desc {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 0.1rem;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 1.5rem;
+            letter-spacing: 0.04em;
+        }
+
+        .footer span { color: var(--accent); }
+
+        @media (max-width: 480px) {
+            .hero { padding: 2rem 1.5rem; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <div class="hero">
+        <div class="badge">Personal Profile</div>
+        <h1 class="name">M. Atha Al Farras</h1>
+        <p class="tagline">19 years old · Pekanbaru, Indonesia</p>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Full Name</div>
+                <div class="info-value">M. Atha Al Farras</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Age</div>
+                <div class="info-value">19 years old</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Place of Birth</div>
+                <div class="info-value">Pekanbaru</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value">April 15, 2007</div>
+            </div>
+        </div>
+
+        <div class="section-label">Hobbies & Interests</div>
+        <div class="hobbies">
+            <div class="hobby-card">
+                <div class="hobby-icon">⚽</div>
+                <div>
+                    <div class="hobby-name">Futsal</div>
+                    <div class="hobby-desc">Loves playing futsal with friends</div>
+                </div>
+            </div>
+            <div class="hobby-card">
+                <div class="hobby-icon">🎮</div>
+                <div>
+                    <div class="hobby-name">Gaming</div>
+                    <div class="hobby-desc">Enjoys video games in free time</div>
+                </div>
+            </div>
+            <div class="hobby-card">
+                <div class="hobby-icon">🏃</div>
+                <div>
+                    <div class="hobby-name">Jogging</div>
+                    <div class="hobby-desc">Stays fit with regular jogging</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">Built with <span>Python Flask</span> · M. Atha Al Farras © 2026</div>
+</div>
+</body>
+</html>
