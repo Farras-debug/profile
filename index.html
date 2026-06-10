@@ -1,268 +1,651 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M. Atha Al Farras — Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M. Atha Al Farras — Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        :root {
-            --night:  #0d0f14;
-            --ink:    #161a23;
-            --card:   #1e2330;
-            --border: #2a3045;
-            --accent: #4f7cff;
-            --glow:   #4f7cff33;
-            --muted:  #8892a4;
-            --light:  #e8ecf4;
-            --white:  #ffffff;
-        }
+:root {
+  --night:   #0d0f14;
+  --ink:     #161a23;
+  --card:    #1e2330;
+  --border:  #2a3045;
+  --accent:  #4f7cff;
+  --glow:    #4f7cff33;
+  --muted:   #8892a4;
+  --light:   #e8ecf4;
+  --white:   #ffffff;
+}
 
-        body {
-            background: var(--night);
-            color: var(--light);
-            font-family: 'Space Grotesk', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 1rem;
-        }
+body {
+  background: var(--night);
+  color: var(--light);
+  font-family: 'Space Grotesk', sans-serif;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
 
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 48px 48px;
-            opacity: 0.35;
-            pointer-events: none;
-            z-index: 0;
-        }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
 
-        .page-wrap {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 680px;
-        }
+.page-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+}
 
-        .hero {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 3rem 2.5rem 2.5rem;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 1.25rem;
-        }
+/* ── TOP CARD (profile + nav side by side) ── */
+.top-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.8rem 2.5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: -80px; right: -80px;
-            width: 260px; height: 260px;
-            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
+.top-card::after {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+  pointer-events: none;
+}
 
-        .badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--accent);
-            background: var(--glow);
-            border: 1px solid var(--accent);
-            border-radius: 100px;
-            padding: 0.3rem 0.85rem;
-            margin-bottom: 1.4rem;
-        }
+/* Profile side */
+.profile-side { flex: 1; min-width: 0; }
 
-        .name {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 6vw, 3rem);
-            font-weight: 700;
-            line-height: 1.1;
-            color: var(--white);
-            margin-bottom: 0.4rem;
-        }
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--glow);
+  border: 1px solid var(--accent);
+  border-radius: 100px;
+  padding: 0.3rem 0.85rem;
+  margin-bottom: 1.2rem;
+}
 
-        .tagline {
-            font-size: 0.95rem;
-            color: var(--muted);
-            font-style: italic;
-            margin-bottom: 2rem;
-        }
+.name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
+.tagline {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
+}
 
-        .info-item {
-            background: var(--ink);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1rem 1.2rem;
-            transition: border-color 0.2s;
-        }
+/* Nav side */
+.nav-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  padding-top: 0.2rem;
+}
 
-        .info-item:hover { border-color: var(--accent); }
+.nav-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 130px;
+  text-align: center;
+}
+.nav-btn:hover { color: var(--white); border-color: var(--accent); background: var(--glow); }
+.nav-btn.active { color: var(--accent); border-color: var(--accent); background: var(--glow); }
 
-        .info-label {
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 0.35rem;
-        }
+/* ── CONTENT CARD ── */
+.content-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: none;
+}
+.content-card.active { display: block; }
 
-        .info-value {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--white);
-        }
+/* ── INFO GRID ── */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
 
-        .section-label {
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--muted);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
+.info-item {
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  transition: border-color 0.2s;
+}
+.info-item:hover { border-color: var(--accent); }
+.info-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+.info-value { font-size: 1rem; font-weight: 600; color: var(--white); }
 
-        .section-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
+/* ── SECTION DIVIDER ── */
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-        .hobbies {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
+/* ── HOBBY CARDS ── */
+.hobbies { display: flex; flex-direction: column; gap: 0.75rem; }
 
-        .hobby-card {
-            background: var(--ink);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1rem 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: border-color 0.2s, transform 0.2s;
-            cursor: default;
-        }
+.hobby-card {
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.hobby-card:hover { border-color: var(--accent); transform: translateX(4px); }
+.hobby-icon { font-size: 1.7rem; width: 2.5rem; text-align: center; flex-shrink: 0; }
+.hobby-name { font-weight: 600; color: var(--white); font-size: 0.95rem; }
+.hobby-desc { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
 
-        .hobby-card:hover {
-            border-color: var(--accent);
-            transform: translateX(4px);
-        }
+/* ── EDUCATION ── */
+.edu-list { display: flex; flex-direction: column; gap: 1rem; }
+.edu-card {
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  transition: border-color 0.2s;
+}
+.edu-card:hover { border-color: var(--accent); }
+.edu-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: var(--glow);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
+}
+.edu-period { font-size: 0.68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .25rem; }
+.edu-school { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: .15rem; }
+.edu-major { font-size: 0.82rem; color: var(--muted); }
 
-        .hobby-icon {
-            font-size: 1.7rem;
-            width: 2.5rem;
-            text-align: center;
-            flex-shrink: 0;
-        }
+/* ── SKILLS ── */
+.skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.skill-card {
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.4rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.skill-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.skill-top { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.skill-icon-box {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.skill-name { font-size: 0.95rem; font-weight: 600; color: var(--white); }
+.skill-bar-bg { height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.skill-bar-fill { height: 100%; background: var(--accent); border-radius: 99px; }
+.skill-pct { font-size: 0.72rem; color: var(--muted); margin-top: .4rem; text-align: right; }
 
-        .hobby-name {
-            font-weight: 600;
-            color: var(--white);
-            font-size: 0.95rem;
-        }
+/* ── EXPERIENCE ── */
+.exp-timeline { position: relative; padding-left: 24px; }
+.exp-timeline::before { content: ''; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 2px; background: var(--border); }
+.exp-item { position: relative; margin-bottom: 1.25rem; }
+.exp-dot {
+  position: absolute; left: -22px; top: 18px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--night);
+}
+.exp-card {
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem;
+  transition: border-color 0.2s;
+}
+.exp-card:hover { border-color: var(--accent); }
+.exp-period { font-size: 0.68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .3rem; }
+.exp-role { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: .15rem; }
+.exp-org { font-size: 0.82rem; color: #4f7cff; margin-bottom: .6rem; font-weight: 500; }
+.exp-desc { font-size: 0.85rem; line-height: 1.7; color: var(--muted); }
 
-        .hobby-desc {
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-top: 0.1rem;
-        }
+/* ── CONTACT ── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.contact-card {
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem;
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.contact-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.contact-label { font-size: 0.68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .3rem; }
+.contact-val { font-size: 0.88rem; font-weight: 600; color: var(--white); }
 
-        .footer {
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--muted);
-            margin-top: 1.5rem;
-            letter-spacing: 0.04em;
-        }
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 1.5rem;
+  letter-spacing: 0.04em;
+}
+.footer span { color: var(--accent); }
 
-        .footer span { color: var(--accent); }
-
-        @media (max-width: 480px) {
-            .hero { padding: 2rem 1.5rem; }
-            .info-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+@media (max-width: 600px) {
+  .top-card { flex-direction: column; }
+  .nav-side { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+  .nav-btn { min-width: unset; }
+  .info-grid, .skill-grid, .contact-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 <div class="page-wrap">
 
-    <div class="hero">
-        <div class="badge">Personal Profile</div>
-        <h1 class="name">M. Atha Al Farras</h1>
-        <p class="tagline">19 years old · Pekanbaru, Indonesia</p>
+  <!-- TOP CARD: profile left, nav right -->
+  <div class="top-card">
+    <div class="profile-side">
+      <div class="badge">Personal Profile</div>
+      <h1 class="name">M. Atha Al Farras</h1>
+      <p class="tagline">19 years old &middot; Pekanbaru, Indonesia</p>
+    </div>
+    <div class="nav-side">
+      <button class="nav-btn active" onclick="showSection('about', this)">About</button>
+      <button class="nav-btn" onclick="showSection('education', this)">Education</button>
+      <button class="nav-btn" onclick="showSection('skills', this)">Skills</button>
+      <button class="nav-btn" onclick="showSection('experience', this)">Experience</button>
+      <button class="nav-btn" onclick="showSection('contact', this)">Contact</button>
+    </div>
+  </div>
 
-        <div class="info-grid">
-            <div class="info-item">
-                <div class="info-label">Full Name</div>
-                <div class="info-value">M. Atha Al Farras</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Age</div>
-                <div class="info-value">19 years old</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Place of Birth</div>
-                <div class="info-value">Pekanbaru</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Date of Birth</div>
-                <div class="info-value">April 15, 2007</div>
-            </div>
-        </div>
-
-        <div class="section-label">Hobbies & Interests</div>
-        <div class="hobbies">
-            <div class="hobby-card">
-                <div class="hobby-icon">⚽</div>
-                <div>
-                    <div class="hobby-name">Futsal</div>
-                    <div class="hobby-desc">Loves playing futsal with friends</div>
-                </div>
-            </div>
-            <div class="hobby-card">
-                <div class="hobby-icon">🎮</div>
-                <div>
-                    <div class="hobby-name">Gaming</div>
-                    <div class="hobby-desc">Enjoys video games in free time</div>
-                </div>
-            </div>
-            <div class="hobby-card">
-                <div class="hobby-icon">🏃</div>
-                <div>
-                    <div class="hobby-name">Jogging</div>
-                    <div class="hobby-desc">Stays fit with regular jogging</div>
-                </div>
-            </div>
-        </div>
+  <!-- ABOUT -->
+  <div class="content-card active" id="about">
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">Full Name</div>
+        <div class="info-value">M. Atha Al Farras</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Age</div>
+        <div class="info-value">19 Years Old</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Place & Date of Birth</div>
+        <div class="info-value">Pekanbaru, April 15 2007</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Address</div>
+        <div class="info-value">Jl. Utama Villa Mas Utama 2 B.14</div>
+      </div>
     </div>
 
-    <div class="footer">Built with <span>Python Flask</span> · M. Atha Al Farras © 2026</div>
+    <div class="section-label">Hobbies &amp; Interests</div>
+    <div class="hobbies">
+      <div class="hobby-card">
+        <div class="hobby-icon">⚽</div>
+        <div>
+          <div class="hobby-name">Futsal</div>
+          <div class="hobby-desc">Loves playing futsal with friends</div>
+        </div>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">🎮</div>
+        <div>
+          <div class="hobby-name">Gaming</div>
+          <div class="hobby-desc">Enjoys video games in free time</div>
+        </div>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">🏃</div>
+        <div>
+          <div class="hobby-name">Jogging</div>
+          <div class="hobby-desc">Stays fit with regular jogging</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="content-card" id="education">
+    <div class="section-label">Education History</div>
+    <div class="edu-list">
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-period">2024 — Present</div>
+          <div class="edu-school">Politeknik Caltex Riau</div>
+          <div class="edu-major">Electronics System Engineering Technology</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">🏫</div>
+        <div>
+          <div class="edu-period">2021 — 2024</div>
+          <div class="edu-school">SMA Negeri 3 Pekanbaru</div>
+          <div class="edu-major">Senior High School</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="content-card" id="skills">
+    <div class="section-label">Technical Skills</div>
+    <div class="skill-grid">
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon-box" style="background:#e8f5e9">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2C9.5 2 7.5 3.5 7.5 5.5V8h4.5v1H5.5C3.5 9 2 11 2 13.5S3.5 18 5.5 18H7v-2.5c0-2 2-3.5 5-3.5s5 1.5 5 3.5V18h1.5c2 0 3.5-2 3.5-4.5S18.5 9 16.5 9H14V8h5V5.5C19 3.5 17 2 14.5 2H12z" fill="#3776ab"/>
+              <circle cx="10" cy="5.5" r="1" fill="#ffd43b"/>
+              <circle cx="14" cy="18.5" r="1" fill="#ffd43b"/>
+            </svg>
+          </div>
+          <span class="skill-name">Python</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div>
+        <div class="skill-pct">75% Proficiency</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon-box" style="background:#e3f2fd">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="20" rx="4" fill="#1976d2"/>
+              <text x="6" y="17" font-size="12" font-weight="bold" fill="white" font-family="monospace">C</text>
+            </svg>
+          </div>
+          <span class="skill-name">C Language</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+        <div class="skill-pct">80% Proficiency</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon-box" style="background:#fff8e1">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <rect x="2" y="5" width="20" height="14" rx="3" fill="#ffb300"/>
+              <circle cx="8" cy="12" r="2.5" fill="white"/>
+              <circle cx="16" cy="12" r="2.5" fill="white"/>
+              <rect x="11" y="10" width="2" height="4" fill="white"/>
+            </svg>
+          </div>
+          <span class="skill-name">LabVIEW</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+        <div class="skill-pct">80% Proficiency</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon-box" style="background:#e0f7fa">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M12 3L2 8l10 5 10-5-10-5z" fill="#00758f"/>
+              <path d="M2 16l10 5 10-5" stroke="#f29111" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M2 12l10 5 10-5" stroke="#00758f" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="skill-name">MySQL</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div>
+        <div class="skill-pct">75% Proficiency</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon-box" style="background:#fff3e0">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M4 3h16l-1.4 15L12 21l-6.6-3L4 3z" fill="#e34c26"/>
+              <path d="M12 4.5v14l5.3-2.4 1.2-12.6H12z" fill="#f06529"/>
+              <path d="M12 9H9.2L9 7H12V4.5H6.8l.5 5H12V9z" fill="white"/>
+              <path d="M12 14.8l-2.7-.8-.2-2H7l.4 4.5L12 17.8v-3z" fill="white"/>
+            </svg>
+          </div>
+          <span class="skill-name">HTML &amp; CSS</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div>
+        <div class="skill-pct">70% Proficiency</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon-box" style="background:#fce4ec">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="3" fill="#e53935"/>
+              <line x1="12" y1="2" x2="12" y2="5" stroke="#e53935" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="19" x2="12" y2="22" stroke="#e53935" stroke-width="2" stroke-linecap="round"/>
+              <line x1="2" y1="12" x2="5" y2="12" stroke="#e53935" stroke-width="2" stroke-linecap="round"/>
+              <line x1="19" y1="12" x2="22" y2="12" stroke="#e53935" stroke-width="2" stroke-linecap="round"/>
+              <line x1="5.6" y1="5.6" x2="7.8" y2="7.8" stroke="#e53935" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16.2" y1="16.2" x2="18.4" y2="18.4" stroke="#e53935" stroke-width="2" stroke-linecap="round"/>
+              <line x1="5.6" y1="18.4" x2="7.8" y2="16.2" stroke="#e53935" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16.2" y1="7.8" x2="18.4" y2="5.6" stroke="#e53935" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="skill-name">Electronics</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+        <div class="skill-pct">90% Proficiency</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="content-card" id="experience">
+    <div class="section-label">Experience</div>
+    <div class="exp-timeline">
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-period">2025 / 2026</div>
+          <div class="exp-role">Vice Chairman — UKM Football</div>
+          <div class="exp-org">Politeknik Caltex Riau</div>
+          <div class="exp-desc">Assisting the chairman in managing and developing the football student activity unit, coordinating training programs, and representing the organization in campus events.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-period">2025</div>
+          <div class="exp-role">Public Relations Member — PMB Futsal PCR</div>
+          <div class="exp-org">Politeknik Caltex Riau</div>
+          <div class="exp-desc">Responsible for promoting and communicating event information to participants and the campus community during the PMB Futsal PCR event.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-period">2025</div>
+          <div class="exp-role">Equipment Coordinator — Mubes TRSE</div>
+          <div class="exp-org">Politeknik Caltex Riau</div>
+          <div class="exp-desc">Coordinated and managed all equipment needs for the TRSE General Assembly (Mubes), ensuring smooth logistics and operational support throughout the event.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-period">2025</div>
+          <div class="exp-role">Equipment Member — STS 2025</div>
+          <div class="exp-org">Politeknik Caltex Riau</div>
+          <div class="exp-desc">Assisted in handling and managing equipment logistics for the STS 2025 event, ensuring all facilities were prepared and available as needed.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-period">2025</div>
+          <div class="exp-role">Consumption Member — ELKA Exhibition 2025</div>
+          <div class="exp-org">Politeknik Caltex Riau</div>
+          <div class="exp-desc">Handled food and beverage logistics for the ELKA (Electronics) Exhibition 2025, coordinating supplies and distribution for committee members and guests.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-period">2025</div>
+          <div class="exp-role">Equipment Coordinator — Isyara X BEM</div>
+          <div class="exp-org">Politeknik Caltex Riau</div>
+          <div class="exp-desc">Led the equipment division for the Isyara X BEM event, overseeing inventory, setup, and breakdown of all physical resources required during the event.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="content-card" id="contact">
+    <div class="section-label">Get in Touch</div>
+    <div class="contact-grid">
+
+      <a class="contact-card" href="https://wa.me/6285161715047" target="_blank">
+        <div class="contact-icon" style="background:#e8f5e9">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#25d366">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.523 5.855L.057 23.215a.75.75 0 0 0 .92.92l5.36-1.466A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.528-5.204-1.44l-.373-.223-3.182.87.87-3.182-.223-.373A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-val">0851 6171 5047</div>
+        </div>
+      </a>
+
+      <a class="contact-card" href="https://instagram.com/thaalfarras" target="_blank">
+        <div class="contact-icon" style="background:#fce4ec">
+          <svg width="26" height="26" viewBox="0 0 24 24">
+            <defs>
+              <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#fd5949"/>
+                <stop offset="50%" style="stop-color:#d6249f"/>
+                <stop offset="100%" style="stop-color:#285AEB"/>
+              </linearGradient>
+            </defs>
+            <rect width="24" height="24" rx="6" fill="url(#ig)"/>
+            <circle cx="12" cy="12" r="4.5" fill="none" stroke="white" stroke-width="1.8"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-val">@thaalfarras</div>
+        </div>
+      </a>
+
+      <a class="contact-card" href="https://tiktok.com/@user6004109973791" target="_blank">
+        <div class="contact-icon" style="background:#f3e5f5">
+          <svg width="26" height="26" viewBox="0 0 24 24">
+            <rect width="24" height="24" rx="6" fill="#010101"/>
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-label">TikTok</div>
+          <div class="contact-val">@user6004109973791</div>
+        </div>
+      </a>
+
+      <a class="contact-card" href="mailto:atha24trse@mahasiswa.pcr.ac.id">
+        <div class="contact-icon" style="background:#e3f2fd">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="4" width="20" height="16" rx="3" fill="#1976d2"/>
+            <polyline points="2,7 12,14 22,7" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val" style="font-size:.78rem">atha24trse@mahasiswa.pcr.ac.id</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="footer">Built with <span>Python Flask</span> &middot; M. Atha Al Farras &copy; 2026</div>
 </div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.content-card').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
 </body>
 </html>
