@@ -54,14 +54,13 @@ body::before {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 2.8rem 2.5rem 2.5rem;
+  padding: 2.8rem 2.5rem 2rem;
   position: relative;
   overflow: hidden;
   margin-bottom: 1.25rem;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .top-card::after {
@@ -108,13 +107,13 @@ body::before {
 /* Nav side */
 .nav-side {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-direction: row;
+  align-items: center;
   gap: 0.4rem;
   flex-shrink: 0;
   position: relative;
   z-index: 2;
-  padding-top: 0.2rem;
+  flex-wrap: wrap;
 }
 
 .nav-btn {
@@ -127,10 +126,9 @@ body::before {
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  padding: 0.45rem 1rem;
+  padding: 0.45rem 1.2rem;
   cursor: pointer;
   transition: all 0.2s;
-  min-width: 130px;
   text-align: center;
 }
 .nav-btn:hover { color: var(--white); border-color: var(--accent); background: var(--glow); }
@@ -312,9 +310,8 @@ body::before {
   <!-- TOP CARD: profile left, nav right -->
   <div class="top-card">
     <div class="profile-side">
-      <div class="badge">Personal Profile</div>
-      <h1 class="name">M. Atha Al Farras</h1>
-      <p class="tagline">19 years old &middot; Pekanbaru, Indonesia</p>
+      <h1 class="name">Hi, I'm <span style="color:var(--accent)">Farras</span></h1>
+      <p class="tagline">Student of <strong style="color:var(--light)">D4 Electronics System Engineering Technology</strong> at Politeknik Caltex Riau. Passionate about technology, electronics, and web development.</p>
     </div>
     <div class="nav-side">
       <button class="nav-btn active" onclick="showSection('about', this)">About</button>
